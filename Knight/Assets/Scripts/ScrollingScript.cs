@@ -49,21 +49,21 @@ public class ScrollingScript : MonoBehaviour
 		}
 	}
 	
-	void Update()
+	void FixedUpdate()
 	{
         // Movement
         Vector3 movement = new Vector3(
 			speed.x * direction.x,
 			speed.y * direction.y,
 			0);
-        if (gameObject.tag == "Foregraund")
-        {
+        //if (gameObject.tag == "Foregraund")
+        //{
 
-            speedByTime += Time.deltaTime / 5;
-            if (speedByTime > 6) {
-                speed.x = speedByTime;
-                }
-        }
+        //    speedByTime += Time.deltaTime / 5;
+        //    if (speedByTime > 6) {
+        //        speed.x = speedByTime;
+        //        }
+        //}
     movement *= Time.deltaTime;
 		transform.Translate(movement);
 
@@ -75,9 +75,9 @@ public class ScrollingScript : MonoBehaviour
         {
             speed.x = initialSpeed.x;
         }
-		
+
         // Move the camera
-		if (isLinkedToCamera)
+        if (isLinkedToCamera)
 		{
 			Camera.main.transform.Translate(movement);
 		}

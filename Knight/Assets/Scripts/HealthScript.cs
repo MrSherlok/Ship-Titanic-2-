@@ -67,7 +67,7 @@ public class HealthScript : MonoBehaviour
                 Damage(shot.damage);
 
                 // Уничтожить выстрел
-                if (otherCollider.gameObject.tag != "Stone" && otherCollider.gameObject.tag != "Enemy")
+                if (otherCollider.gameObject.tag == "Arrow") /*!= "Stone" && otherCollider.gameObject.tag != "Enemy" && otherCollider.gameObject.tag != "Character"*/
                 {
                     Destroy(shot.gameObject); // Всегда цельтесь в игровой объект, иначе вы просто удалите скрипт.      }
                 }

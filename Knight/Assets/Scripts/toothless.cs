@@ -50,7 +50,7 @@ public class toothless : MonoBehaviour {
     {
         if (isGrounded==true)
         {
-            rb.velocity += 6 * Vector2.up;/*.AddForce(Vector2.up * 350);*/
+            rb/*.velocity += 10 * Vector2.up;*/.AddForce(Vector2.up * 350);
             GetComponent<Animator>().SetBool("Run", false);
             GetComponent<Animator>().SetBool("Jump", true);
             isGrounded = false;
