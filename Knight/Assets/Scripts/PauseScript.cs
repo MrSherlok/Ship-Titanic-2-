@@ -29,4 +29,9 @@ public class PauseScript : MonoBehaviour {
 		}
 
 	}
+    public void Reload()
+    {
+        Application.LoadLevel("tryMe");
+        Time.timeScale = 1;
+    }
 }

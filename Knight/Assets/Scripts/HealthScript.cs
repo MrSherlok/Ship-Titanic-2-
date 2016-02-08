@@ -1,4 +1,6 @@
 ﻿
+using System.Collections;
+using UnityEngine.UI;
 
 using UnityEngine;
 
@@ -21,6 +23,14 @@ public class HealthScript : MonoBehaviour
     /// Наносим урон и проверяем должен ли объект быть уничтожен
     /// </summary>
     /// <param name="damageCount"></param>
+    private Image deathBG;
+    public void Start()
+    {
+ 
+        deathBG = GameObject.Find("Dead").GetComponent<Image>();
+        //reload.enabled = false;
+        deathBG.enabled = false;
+    }
     public void Damage(int damageCount)
     {
         hp -= damageCount;
@@ -37,7 +47,11 @@ public class HealthScript : MonoBehaviour
             if (gameObject.tag == "Character")
             {
                 Invoke("Pause", 1f);
-                
+                //Time.timeScale = 0;
+
+                //reload.enabled = true;
+                deathBG.enabled = true;
+
             }
             if (gameObject.tag == "Enemy")
             {
