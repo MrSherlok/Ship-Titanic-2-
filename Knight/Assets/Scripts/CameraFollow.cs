@@ -27,9 +27,10 @@ public class CameraFollow : MonoBehaviour {
         target = GameObject.Find("CameraPoint").transform;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         transform.position = offset + target.position;
         transform.LookAt(target);
+        transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 }

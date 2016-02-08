@@ -1095,7 +1095,7 @@ GameObject:
   - 61: {fileID: 6136434}
   - 114: {fileID: 11474130}
   - 114: {fileID: 11461866}
-  - 114: {fileID: 11447884}
+  - 114: {fileID: 11414820}
   m_Layer: 0
   m_Name: Enemy_Prefab
   m_TagString: Enemy
@@ -2643,6 +2643,19 @@ MonoBehaviour:
   limitBones: 1
   angleLimitTransform: []
   angleLimits: []
+--- !u!114 &11414820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dcee592201bf0b49ae8a1fe0257ee6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: {x: 3, y: 2}
+  direction: {x: -1, y: 0}
 --- !u!114 &11415730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3502,19 +3515,6 @@ MonoBehaviour:
   limitBones: 1
   angleLimitTransform: []
   angleLimits: []
---- !u!114 &11447884
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2ffe7c1bb6c93b4a8d2d30b194a8a88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: {x: 0.05, y: 0.05}
-  direction: {x: -1, y: 0}
 --- !u!114 &11454620
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6614,7 +6614,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: speed.x
-      value: 0.05
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: speed.y

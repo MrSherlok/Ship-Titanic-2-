@@ -18,7 +18,7 @@ public class UIHPScript : MonoBehaviour
         firstHpImage = GameObject.Find("Heart").GetComponent<Image>();
         secondHpImage = GameObject.Find("Heart2").GetComponent<Image>();
     }
-    void Update()
+    void FixedUpdate()
     {
         hpUI = GameObject.FindWithTag("Character").GetComponent<HealthScript>().hp;
         if (hpUI > 1)

@@ -42,6 +42,8 @@ public class HealthScript : MonoBehaviour
             if (gameObject.tag == "Enemy")
             {
                 gameObject.GetComponent<Collider2D>().enabled = false;
+                gameObject.GetComponent<MoveScript>().speed.x = 0;
+                Destroy(gameObject, 5f);
             }
 
 

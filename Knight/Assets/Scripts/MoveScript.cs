@@ -7,7 +7,7 @@ public class MoveScript : MonoBehaviour {
     float speedByTime;
    
 
-	void Update () {
+	void FixedUpdate() {
         //speedByTime = Time.deltaTime/5;
         //if   (speedByTime == 5)   {
         //    speed.x += 5;
@@ -21,10 +21,10 @@ public class MoveScript : MonoBehaviour {
         //    speed.x += 5;
         //}
         Vector3 movement = new Vector3(speed.x * direction.x, speed.y * direction.y, 0);
-        //movement *= Time.deltaTime;
-        //transform.Translate (movement);
+        movement *= Time.deltaTime;
+        transform.Translate (movement);
 
-        transform.position += movement;
+        //transform.position += movement;
 
 	}
 }

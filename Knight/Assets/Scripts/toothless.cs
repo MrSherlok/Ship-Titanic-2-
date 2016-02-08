@@ -35,21 +35,22 @@ public class toothless : MonoBehaviour {
   }
 
 	void FixedUpdate () {
-
+        
         isGrounded = IsGrounded();
 
 
-        if(isGrounded == true) {
+        if (isGrounded == true) {
              GetComponent<Animator>().SetBool("Jump", false);
             GetComponent<Animator>().SetBool("Run", true);
         }
+        transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 
     public void Jump()
     {
         if (isGrounded==true)
         {
-            rb.AddForce(Vector2.up * 350);
+            rb.velocity += 6 * Vector2.up;/*.AddForce(Vector2.up * 350);*/
             GetComponent<Animator>().SetBool("Run", false);
             GetComponent<Animator>().SetBool("Jump", true);
             isGrounded = false;
@@ -57,7 +58,7 @@ public class toothless : MonoBehaviour {
         
     }
 
-   
+
 
     public bool IsGrounded()
     {
@@ -87,7 +88,7 @@ public class toothless : MonoBehaviour {
     //    if (coll.gameObject.tag == "Ground")
     //    {
     //        GetComponent<Animator>().SetBool("Jump", false);
-    //        isOnGround = true;
+    //        isGrounded = true;
     //    }
 
     //}

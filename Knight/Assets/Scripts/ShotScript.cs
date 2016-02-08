@@ -26,10 +26,12 @@ public class ShotScript : MonoBehaviour
             Destroy(gameObject, 25f);
 
         }
-        else
+        if (gameObject.tag == "Arrow")
         {
-            Destroy(gameObject, 5f);
+
+            Destroy(gameObject, 0.8f);
         }
+
     }
 
  
