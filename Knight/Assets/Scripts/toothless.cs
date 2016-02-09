@@ -40,8 +40,8 @@ public class toothless : MonoBehaviour {
 
 
         if (isGrounded == true) {
-             GetComponent<Animator>().SetBool("Jump", false);
-            GetComponent<Animator>().SetBool("Run", true);
+            // GetComponent<Animator>().SetBool("Jump", false);
+            //GetComponent<Animator>().SetBool("Run", true);
         }
         transform.rotation = Quaternion.Euler(Vector3.zero);
     }
@@ -51,8 +51,8 @@ public class toothless : MonoBehaviour {
         if (isGrounded==true)
         {
             rb/*.velocity += 10 * Vector2.up;*/.AddForce(Vector2.up * 350);
-            GetComponent<Animator>().SetBool("Run", false);
-            GetComponent<Animator>().SetBool("Jump", true);
+            //GetComponent<Animator>().SetBool("Run", false);
+            //GetComponent<Animator>().SetBool("Jump", true);
             isGrounded = false;
         }
         

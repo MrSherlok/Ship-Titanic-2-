@@ -40,8 +40,8 @@ public class HealthScript : MonoBehaviour
             // Destroy(gameObject);
            
             
-            GetComponent<Animator>().SetBool("Die", true);
-            GetComponent<Animator>().SetBool("Run", false);
+            //GetComponent<Animator>().SetBool("Die", true);
+            //GetComponent<Animator>().SetBool("Run", false);
 
             if (gameObject.tag == "Character")
             {
