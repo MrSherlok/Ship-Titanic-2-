@@ -7,7 +7,7 @@ public class MenuScript : MonoBehaviour {
     private Image shootImage;
     private Image jumpImage;
     private Image pauseImage;
-  //  private Image backImage;
+    //private Image backImage;
     private Image scoreImage;
  //   private Image voiceImage;
     private Image startImage;
@@ -22,13 +22,14 @@ public class MenuScript : MonoBehaviour {
         shootImage = GameObject.Find("Fire").GetComponent<Image>();
         jumpImage = GameObject.Find("Jump").GetComponent<Image>();
         pauseImage = GameObject.Find("Pause").GetComponent<Image>();
-     //   backImage = GameObject.Find("firstHpImage").GetComponent<Image>();
+        //backImage = GameObject.Find("Reload").GetComponent<Image>();
       //  scoreImage = GameObject.Find("Score").GetComponent<Image>();
      //   voiceImage = GameObject.Find("firstHpImage").GetComponent<Image>();
         startImage = GameObject.Find("Start").GetComponent<Image>();
         firstHpIm = GameObject.Find("Heart").GetComponent<Image>();
         secondHpIm = GameObject.Find("Heart2").GetComponent<Image>();
 
+        //backImage.enabled = false;
         shootImage.enabled = false;
         jumpImage.enabled = false;
         pauseImage.enabled = false;
@@ -54,5 +55,7 @@ public class MenuScript : MonoBehaviour {
         Time.timeScale = 1;
 
     }
+  
+
 
 }

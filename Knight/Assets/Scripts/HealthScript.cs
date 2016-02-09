@@ -1,6 +1,5 @@
-﻿
-
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Handle hitpoints and damages
@@ -16,6 +15,16 @@ public class HealthScript : MonoBehaviour
     /// Враг или игрок?
     /// </summary>
     public bool isEnemy = true;
+    private Image reload;
+    private Image deathBG;
+
+    public void Start()
+    {
+        reload = GameObject.Find("Reload").GetComponent<Image>();
+        deathBG = GameObject.Find("Dead").GetComponent<Image>();
+        reload.enabled = false;
+        deathBG.enabled = false;
+    }
 
     /// <summary>
     /// Наносим урон и проверяем должен ли объект быть уничтожен
@@ -37,7 +46,9 @@ public class HealthScript : MonoBehaviour
             if (gameObject.tag == "Character")
             {
                 Invoke("Pause", 1f);
-                
+                reload.enabled = true;
+                deathBG.enabled = true;
+
             }
             if (gameObject.tag == "Enemy")
             {
