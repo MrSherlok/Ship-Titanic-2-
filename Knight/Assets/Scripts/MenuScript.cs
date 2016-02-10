@@ -56,8 +56,7 @@ public class MenuScript : MonoBehaviour {
      //   scoreImage.enabled = true;
         firstHpIm.enabled = true;
         secondHpIm.enabled = true;
-
-
+        
         voiceImage.enabled = false;
         startImage.enabled = false;
 
