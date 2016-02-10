@@ -7,8 +7,7 @@ public class PauseScript : MonoBehaviour {
     private Button _fire;
     private Button _jump;
 
-
-    void Start()
+void Start()
     {
         _fire = GameObject.Find("Fire").GetComponent<Button>();
         _jump = GameObject.Find("Jump").GetComponent<Button>();
