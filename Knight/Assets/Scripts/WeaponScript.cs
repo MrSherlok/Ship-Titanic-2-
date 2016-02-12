@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class WeaponScript : MonoBehaviour
 {
-    public static bool isShooting = false; // стреляет ли сейчас игрок
+    public static bool isShooting = false;
     public Transform shotPrefab; //Префаб снаряда для стрельбы
-    public float shootingRate = 0.25f; //Время перезарядки в секундах
+    public float shootingRate = 0.5f; //Время перезарядки в секундах
     private float shootCooldown; //перезарядка
 
     void Start()
@@ -15,13 +15,18 @@ public class WeaponScript : MonoBehaviour
         shootCooldown = 0f;
     }
 
-    void Update()
-    {
-        if (shootCooldown > 0)
-        {
-            shootCooldown -= Time.deltaTime;
-        }
-    }
+    //void FixedUpdate()
+    //{
+    //    if (shootCooldown < 0)
+    //    {
+    //        _canAttack = true;
+
+    //    }
+    //    if (shootCooldown > 0)
+    //    {
+    //        shootCooldown -= Time.deltaTime;
+    //    }
+    //}
 
     //--------------------------------
     // 3 - Стрельба из другого скрипта
@@ -32,18 +37,22 @@ public class WeaponScript : MonoBehaviour
     /// </summary>
 
 
-    public void Attack(bool isEnemy)
+    public void Attack(/*bool isEnemy*/)
     {
-        if (CanAttack)
+        if (toothless._canAttack && toothless.isGrounded)
         {
-            ShootAnim();
+            isShooting = true;
+            toothless._canAttack = false;
+            //ShootAnim();
+            GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Run", false);
+            GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Shoot", true);
             Invoke("ShotCreate", 5f/6f);
         }
     }
 
     void ShotCreate()
     {
-            shootCooldown = shootingRate;
+        toothless._shootCooldown = shootingRate;
 
             // Создайте новый выстрел
             var shotTransform = Instantiate(shotPrefab) as Transform;
@@ -57,33 +66,27 @@ public class WeaponScript : MonoBehaviour
             {
                // shot.isEnemyShot = isEnemy;
             }
-            
 
-            // Сделайте так, чтобы выстрел всегда был направлен на него
             MoveScript move = shotTransform.gameObject.GetComponent<MoveScript>();
             if (move != null)
             {
               move.direction = Vector2.right; // в двухмерном пространстве это будет справа от спрайта
             }
+
         GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Run", true);
         GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Shoot", false);
-
         isShooting = false;
-
     }
 
-    void ShootAnim()
-    {
-        var ch = GameObject.FindGameObjectWithTag("Character");
-        var anim = ch.GetComponent<Animator>();
-        GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Run", false);
+    //void ShootAnim()
+    //{
+    //    var ch = GameObject.Find("Character_Global_CTRL");
+    //    var anim = ch.GetComponent<Animator>();
+    //    GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Run", false);
 
-        GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Shoot", true);
-        Debug.Log(GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().GetBool("Shoot"));
-        isShooting = true;
-        
- 
-    }
+    //    GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Shoot", true);
+    //    Debug.Log(GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().GetBool("Shoot"));     
+    //}
 
     /// <summary>
     /// Готово ли оружие выпустить новый снаряд?

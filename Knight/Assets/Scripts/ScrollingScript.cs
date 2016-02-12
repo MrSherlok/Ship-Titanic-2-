@@ -15,13 +15,11 @@ public class ScrollingScript : MonoBehaviour
 
     public float speedByTime;
 
-    private Vector2 initialSpeed;
+    private float initialSpeed;
 
 	// 3 - Get all the children
 	void Start()
 	{
-        initialSpeed = speed;
-
         // For infinite background only
 		if (isLooping)
 		{
@@ -48,32 +46,44 @@ public class ScrollingScript : MonoBehaviour
 				).ToList();
 		}
 	}
-	
-	void FixedUpdate()
-	{
+
+    void FixedUpdate()
+    {
         // Movement
         Vector3 movement = new Vector3(
-			speed.x * direction.x,
-			speed.y * direction.y,
-			0);
-        //if (gameObject.tag == "Foregraund")
-        //{
+            speed.x * direction.x,
+            speed.y * direction.y,
+            0);
+        if (gameObject.tag == "Foregraund")
+        {
 
-        //    speedByTime += Time.deltaTime / 5;
-        //    if (speedByTime > 6) {
-        //        speed.x = speedByTime;
-        //        }
-        //}
-    movement *= Time.deltaTime;
+            speedByTime += Time.deltaTime / 5;
+            if (speedByTime <= 6f && speedByTime >= 0f)
+            {
+                speed.x = 6f;
+            }
+            else {
+                if (speedByTime <= 15f && speedByTime >= 6f)
+                {
+                    speed.x = 8f;
+                } else {
+                    if (speedByTime <= 20f && speedByTime >= 15f)
+                    {
+                        speed.x = 10f;
+                    }   
+                }
+            }
+        }
+        movement *= Time.deltaTime;
 		transform.Translate(movement);
-
-        if (WeaponScript.isShooting == true)
+        initialSpeed = speed.x;
+        if (WeaponScript.isShooting)
         {
             speed.x = 0;
         }
         else
         {
-            speed.x = initialSpeed.x;
+            speed.x = initialSpeed;
         }
 
         // Move the camera

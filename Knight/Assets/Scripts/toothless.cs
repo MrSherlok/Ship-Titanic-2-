@@ -12,7 +12,10 @@ public class toothless : MonoBehaviour {
     private float groundRadius;
     [SerializeField]
     private LayerMask whatIsGround;
-    public bool isGrounded;
+    public static bool isGrounded;
+
+    public static bool _canAttack = true;
+    public static float _shootCooldown;
 
     void Start()
     {
@@ -35,7 +38,18 @@ public class toothless : MonoBehaviour {
   //}
 
 	void FixedUpdate () {
-        
+
+        if (_shootCooldown < 0)
+        {
+            _canAttack = true;
+
+        }
+        if (_shootCooldown > 0)
+        {
+            _shootCooldown -= Time.deltaTime;
+        }
+
+
         isGrounded = IsGrounded();
 
 

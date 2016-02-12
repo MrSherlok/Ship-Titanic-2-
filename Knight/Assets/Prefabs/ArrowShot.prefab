@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dcee592201bf0b49ae8a1fe0257ee6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 20, y: 0}
+  speed: {x: 30, y: 0}
   direction: {x: 1, y: 0}
 --- !u!212 &21239586
 SpriteRenderer:
@@ -148,7 +148,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: speed.x
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
