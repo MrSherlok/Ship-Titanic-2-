@@ -40,8 +40,8 @@ public class HealthScript : MonoBehaviour
             // Destroy(gameObject);
            
             
-            //GetComponent<Animator>().SetBool("Die", true);
-            //GetComponent<Animator>().SetBool("Run", false);
+            GetComponent<Animator>().SetBool("Die", true);
+            GetComponent<Animator>().SetBool("Run", false);
 
             if (gameObject.tag == "Character")
             {
@@ -53,8 +53,8 @@ public class HealthScript : MonoBehaviour
             if (gameObject.tag == "Enemy")
             {
 
-                GetComponent<Animator>().SetBool("Die", true);
-                GetComponent<Animator>().SetBool("Run", false);
+                //GetComponent<Animator>().SetBool("Die", true);
+                //GetComponent<Animator>().SetBool("Run", false);
 
                 gameObject.GetComponent<Collider2D>().enabled = false;
                 gameObject.GetComponent<MoveScript>().speed.x = 0;

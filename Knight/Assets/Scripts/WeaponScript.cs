@@ -65,8 +65,8 @@ public class WeaponScript : MonoBehaviour
             {
               move.direction = Vector2.right; // в двухмерном пространстве это будет справа от спрайта
             }
-        GameObject.FindGameObjectWithTag("Character").GetComponent<Animator>().SetBool("Run", true);
-        GameObject.FindGameObjectWithTag("Character").GetComponent<Animator>().SetBool("Shoot", false);
+        GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Run", true);
+        GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Shoot", false);
 
         isShooting = false;
 
@@ -76,8 +76,10 @@ public class WeaponScript : MonoBehaviour
     {
         var ch = GameObject.FindGameObjectWithTag("Character");
         var anim = ch.GetComponent<Animator>();
-            anim.SetBool("Run", false);
-            anim.SetBool("Shoot", true);
+        GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Run", false);
+
+        GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Shoot", true);
+        Debug.Log(GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().GetBool("Shoot"));
         isShooting = true;
         
  

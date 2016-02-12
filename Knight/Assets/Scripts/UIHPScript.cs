@@ -20,7 +20,7 @@ public class UIHPScript : MonoBehaviour
     }
     void FixedUpdate()
     {
-        hpUI = GameObject.FindWithTag("Character").GetComponent<HealthScript>().hp;
+        hpUI = GameObject.Find("Character_Global_CTRL").GetComponent<HealthScript>().hp;
         if (hpUI > 1)
         {
             secondHpImage.sprite = fullHpSprite;
