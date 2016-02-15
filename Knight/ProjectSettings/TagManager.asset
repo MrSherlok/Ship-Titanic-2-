@@ -71,10 +71,10 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 3106587647
-    locked: 0
+    locked: 1
   - name: Player
     uniqueID: 76394543
-    locked: 0
+    locked: 1
   - name: Controllers
     uniqueID: 3263411541
     locked: 0
