@@ -60,7 +60,7 @@ public class RandomGenerateScript : MonoBehaviour
                 {
                     genLenghth += Random.Range(10, 30);
                     Instantiate(enemyObj, new Vector3(_currentPosition.x + genLenghth, _currentPosition.y - 5, _currentPosition.z-6), Quaternion.identity);
-                    enemyObj.GetComponent<Animator>().Play("Run");
+                    enemyObj.GetComponent<Animator>().SetBool("Run",true);
                 }
                 length = 40;
                 genLenghth = 0;
