@@ -29,7 +29,7 @@ public class ShotScript : MonoBehaviour
         if (gameObject.tag == "Arrow")
         {
 
-            Destroy(gameObject, 0.8f);
+            Destroy(gameObject, 0.4f);
         }
 
     }

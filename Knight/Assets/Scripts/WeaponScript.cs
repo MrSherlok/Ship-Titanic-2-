@@ -1,6 +1,8 @@
 ﻿
 
 using UnityEngine;
+using UnityEngine.UI;
+
 
 
 public class WeaponScript : MonoBehaviour
@@ -10,8 +12,11 @@ public class WeaponScript : MonoBehaviour
     public float shootingRate = 0.5f; //Время перезарядки в секундах
     private float shootCooldown; //перезарядка
 
+    private Button _shootImage;
+
     void Start()
     {
+        _shootImage = GameObject.Find("Fire").GetComponent<Button>();
         shootCooldown = 0f;
     }
 
@@ -38,15 +43,17 @@ public class WeaponScript : MonoBehaviour
 
 
     public void Attack(/*bool isEnemy*/)
-    {
+    {        
         if (toothless._canAttack && toothless.isGrounded)
         {
+            _shootImage.enabled = false;
             isShooting = true;
             toothless._canAttack = false;
-            //ShootAnim();
+            //ShootAnim();            
             GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Run", false);
             GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Shoot", true);
-            Invoke("ShotCreate", 5f/6f);
+            Invoke("ShotCreate", 2f/6f);
+            Invoke("EnableButton",1f);
         }
     }
 
@@ -75,7 +82,12 @@ public class WeaponScript : MonoBehaviour
 
         GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Run", true);
         GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Shoot", false);
-        isShooting = false;
+        isShooting = false;        
+    }
+
+    void EnableButton()
+    {
+        _shootImage.enabled = true;
     }
 
     //void ShootAnim()
