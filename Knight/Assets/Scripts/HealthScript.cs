@@ -16,14 +16,14 @@ public class HealthScript : MonoBehaviour
     /// </summary>
     public bool isEnemy = true;
     private Image reload;
-    private Image deathBG;
+    private GameObject deathBG;
 
     public void Start()
     {
         reload = GameObject.Find("Reload").GetComponent<Image>();
-        deathBG = GameObject.Find("Dead").GetComponent<Image>();
+        deathBG = GameObject.Find("Dead")/*.GetComponent<Image>()*/;
         reload.enabled = false;
-        deathBG.enabled = false;
+        deathBG.GetComponent<Image>().enabled = false;
     }
 
     /// <summary>
@@ -42,12 +42,15 @@ public class HealthScript : MonoBehaviour
             
             GetComponent<Animator>().SetBool("Die", true);
             GetComponent<Animator>().SetBool("Run", false);
+            GetComponent<Animator>().SetBool("Shoot", false);
+            GetComponent<Animator>().SetBool("Jump", false);
 
             if (gameObject.tag == "Character")
             {
-                Invoke("Pause", 1f);
+                Invoke("Pause", 0.4f);
                 reload.enabled = true;
-                deathBG.enabled = true;
+                deathBG.GetComponent<Image>().enabled = true;
+                deathBG.GetComponent<Animator>().Play("dead");
 
             }
             if (gameObject.tag == "Enemy")
