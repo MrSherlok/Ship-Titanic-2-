@@ -19,8 +19,16 @@ public class HealthScript : MonoBehaviour
     private Image reload;
     private GameObject deathBG;
 
+    private List<GameObject> _enemyArray = new List<GameObject>();
+
     public void Start()
     {
+        _enemyArray.Add((GameObject)GameObject.Find("Enemy_Prefab"));
+        _enemyArray.Add((GameObject)GameObject.Find("Enemy_Prefab (1)"));
+        _enemyArray.Add((GameObject)GameObject.Find("Enemy_Prefab (2)"));
+        _enemyArray.Add((GameObject)GameObject.Find("Enemy_Prefab (3)"));
+        _enemyArray.Add((GameObject)GameObject.Find("Enemy_Prefab (4)"));
+
         reload = GameObject.Find("Reload").GetComponent<Image>();
         deathBG = GameObject.Find("Dead")/*.GetComponent<Image>()*/;
         reload.enabled = false;
@@ -56,6 +64,12 @@ public class HealthScript : MonoBehaviour
                 deathBG.GetComponent<Image>().enabled = true;
                 deathBG.GetComponent<Animator>().enabled = true;
                 GameObject.FindWithTag("Foregraund").GetComponent<ScrollingScript>().enabled = false;
+                for(int i = 0; i < 5; i++)
+                {
+                    _enemyArray[i].GetComponent<MoveScript>().speed.x = 0;
+
+                }
+
 
             }
             if (gameObject.tag == "Enemy")
@@ -90,7 +104,7 @@ public class HealthScript : MonoBehaviour
                 Damage(shot.damage);
 
                 // Уничтожить выстрел
-                if (otherCollider.gameObject.tag == "Arrow") /*!= "Stone" && otherCollider.gameObject.tag != "Enemy" && otherCollider.gameObject.tag != "Character"*/
+                if (otherCollider.gameObject.tag == "Arrow" && otherCollider.gameObject.tag != "Character") /*!= "Stone" && otherCollider.gameObject.tag != "Enemy" && otherCollider.gameObject.tag != "Character"*/
                 {
                     Destroy(shot.gameObject); // Всегда цельтесь в игровой объект, иначе вы просто удалите скрипт.      }
                 }
@@ -99,7 +113,7 @@ public class HealthScript : MonoBehaviour
                 {
                     otherCollider.GetComponent<Animator>().SetBool("Die", true);
                     otherCollider.GetComponent<Animator>().SetBool("Run", false);
-                    Destroy(gameObject, 1f);
+                    //Destroy(gameObject, 1f);
                 }
             }
         }

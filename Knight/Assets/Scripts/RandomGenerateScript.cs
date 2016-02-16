@@ -26,6 +26,7 @@ public class RandomGenerateScript : MonoBehaviour
 
     void Awake()
     {
+
         pointColl = GameObject.Find("GeneratePoint").GetComponent<BoxCollider2D>();
         SceneList.Add(GameObject.Find("EarthMap1"));
         SceneList.Add(GameObject.Find("EarthMap2"));
