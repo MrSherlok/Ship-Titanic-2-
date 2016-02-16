@@ -24,6 +24,9 @@ public class HealthScript : MonoBehaviour
         deathBG = GameObject.Find("Dead")/*.GetComponent<Image>()*/;
         reload.enabled = false;
         deathBG.GetComponent<Image>().enabled = false;
+        deathBG.GetComponent<Animator>().enabled = false;
+
+        GameObject.FindWithTag("Foregraund").GetComponent<ScrollingScript>().enabled = true;
     }
 
     /// <summary>
@@ -47,10 +50,16 @@ public class HealthScript : MonoBehaviour
 
             if (gameObject.tag == "Character")
             {
-                Invoke("Pause", 0.4f);
+                //Invoke("Pause", 0.4f);
                 reload.enabled = true;
                 deathBG.GetComponent<Image>().enabled = true;
-                deathBG.GetComponent<Animator>().Play("dead");
+                deathBG.GetComponent<Animator>().enabled = true;
+                GameObject.FindWithTag("Foregraund").GetComponent<ScrollingScript>().enabled = false;
+                //while (GameObject.FindWithTag("Enemy") != null)
+                //{
+                //    Destroy(GameObject.FindWithTag("Enemy"));
+                //}
+
 
             }
             if (gameObject.tag == "Enemy")
