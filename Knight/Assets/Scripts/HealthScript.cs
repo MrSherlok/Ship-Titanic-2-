@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 /// <summary>
 /// Handle hitpoints and damages
@@ -55,11 +56,6 @@ public class HealthScript : MonoBehaviour
                 deathBG.GetComponent<Image>().enabled = true;
                 deathBG.GetComponent<Animator>().enabled = true;
                 GameObject.FindWithTag("Foregraund").GetComponent<ScrollingScript>().enabled = false;
-                //while (GameObject.FindWithTag("Enemy") != null)
-                //{
-                //    Destroy(GameObject.FindWithTag("Enemy"));
-                //}
-
 
             }
             if (gameObject.tag == "Enemy")
@@ -70,7 +66,7 @@ public class HealthScript : MonoBehaviour
 
                 gameObject.GetComponent<Collider2D>().enabled = false;
                 gameObject.GetComponent<MoveScript>().speed.x = 0;
-                Destroy(gameObject, 5f);
+                //Destroy(gameObject, 5f);
             }
 
 

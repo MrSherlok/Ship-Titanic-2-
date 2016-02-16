@@ -20,12 +20,12 @@ public class ShotScript : MonoBehaviour
     void Start()
     {
         // Ограниченное время жизни, чтобы избежать утечек
-        if (gameObject.tag == "Enemy")
-        {
+        //if (gameObject.tag == "Enemy")
+        //{
 
-            Destroy(gameObject, 25f);
+        //    Destroy(gameObject, 25f);
 
-        }
+        //}
         if (gameObject.tag == "Arrow")
         {
 

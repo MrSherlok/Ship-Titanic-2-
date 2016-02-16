@@ -15,6 +15,9 @@ public class RandomGenerateScript : MonoBehaviour
     //private Vector3 positionOfWall; 
     //public int maxRandomNumber = 4; 
 
+        public List<GameObject> enemyArray = new List<GameObject>();
+    private int i = 0;
+
     public GameObject enemyObj;
     private int length = 40;
     private int genLenghth = 0;
@@ -59,8 +62,17 @@ public class RandomGenerateScript : MonoBehaviour
                 while (length >= genLenghth)
                 {
                     genLenghth += Random.Range(20, 30);
-                    Instantiate(enemyObj, new Vector3(_currentPosition.x + genLenghth, _currentPosition.y - 5, _currentPosition.z-6), Quaternion.identity);
-                    enemyObj.GetComponent<Animator>().SetBool("Run",true);
+                    enemyArray[i].transform.position = new Vector3(_currentPosition.x + genLenghth, _currentPosition.y - 5, _currentPosition.z-6);
+                    enemyArray[i].GetComponent<Animator>().SetBool("Die", false);
+                    enemyArray[i].GetComponent<Animator>().SetBool("Run",true);
+                    enemyArray[i].GetComponent<HealthScript>().hp = 1;
+                    enemyArray[i].GetComponent<Collider2D>().enabled = true;
+                    enemyArray[i].GetComponent<MoveScript>().speed.x = 3;
+                    i++;
+                    Debug.Log("tp was");
+                    if (i >= 4) {
+                        i = 0;
+                    }
                 }
                 length = 40;
                 genLenghth = 0;
