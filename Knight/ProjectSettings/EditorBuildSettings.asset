@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/tryMe.unity
   - enabled: 0
     path: Assets/Scenes/ttry.unity
+  - enabled: 1
+    path: Assets/Scenes/Authors.unity
