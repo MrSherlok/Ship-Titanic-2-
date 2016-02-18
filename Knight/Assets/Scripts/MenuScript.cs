@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class MenuScript : MonoBehaviour
     //private Image backImage;
     private Text scoreImage;
     private Image voiceImage;
+    private Image authorsImage;
     private Image startImage;
     private Image firstHpIm;
     private Image secondHpIm;
@@ -32,6 +34,7 @@ public class MenuScript : MonoBehaviour
         //backImage = GameObject.Find("Reload").GetComponent<Image>();
         scoreImage = GameObject.Find("Score").GetComponent<Text>();
         voiceImage = GameObject.Find("Voise").GetComponent<Image>();
+        authorsImage = GameObject.Find("Authors").GetComponent<Image>();
         startImage = GameObject.Find("Start").GetComponent<Image>();
         firstHpIm = GameObject.Find("Heart").GetComponent<Image>();
         secondHpIm = GameObject.Find("Heart2").GetComponent<Image>();
@@ -45,12 +48,16 @@ public class MenuScript : MonoBehaviour
         secondHpIm.enabled = false;
         startImage.enabled = true;
         voiceImage.enabled = true;
+        authorsImage.enabled = true;
+        GameObject.Find("Tap to start").GetComponent<SpriteRenderer>().enabled = true;
 
         Time.timeScale = 0;
     }
 
     public void StartButton()
     {
+        GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Idle", false);
+        GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Run", true);
         shootImage.enabled = true;
         jumpImage.enabled = true;
         pauseImage.enabled = true;
@@ -60,8 +67,10 @@ public class MenuScript : MonoBehaviour
 
         voiceImage.enabled = false;
         startImage.enabled = false;
+        authorsImage.enabled = false;
+        GameObject.Find("Tap to start").GetComponent<SpriteRenderer>().enabled = false;
 
-        Time.timeScale = 1;
+       Time.timeScale = 1;
 
     }
     public void MusicUI()
@@ -79,6 +88,9 @@ public class MenuScript : MonoBehaviour
         }
     }
 
-
+     public void LoadAuthors()
+    {
+        SceneManager.LoadScene("Authors");
+    }
 
 }
