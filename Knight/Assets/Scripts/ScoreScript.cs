@@ -9,13 +9,18 @@ public class ScoreScript : MonoBehaviour
     private float scoregametime;
     private Text scoreIm;
 
+    private int hpScore;
+
     void Start()
     {
         scoreIm = GameObject.Find("Score").GetComponent<Text>();
     }
     void FixedUpdate()
     {
+        hpScore = GameObject.Find("Character_Global_CTRL").GetComponent<HealthScript>().hp;
+        if (hpScore > 0) { 
         scoregametime += Time.deltaTime;
+    }
 
         if (scoregametime >= 2)
         {

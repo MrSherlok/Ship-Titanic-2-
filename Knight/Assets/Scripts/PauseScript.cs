@@ -23,7 +23,9 @@ void Start()
 
 
         else {
-			Time.timeScale = 1; 
+            _fire.enabled = true;
+            _jump.enabled = true;
+            Time.timeScale = 1; 
 	
 		}
 
