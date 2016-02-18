@@ -21,6 +21,13 @@ public class HealthScript : MonoBehaviour
 
     private List<GameObject> _enemyArray = new List<GameObject>();
 
+    private int hpHeart = 2;
+    private SpriteRenderer heartRenderer;
+    private Rigidbody2D heartRb;
+    private SpriteRenderer heart1Renderer;
+    private Rigidbody2D heart1Rb;
+    private Vector3 pointPoz;
+
     public void Start()
     {
         _enemyArray.Add((GameObject)GameObject.Find("Enemy_Prefab"));
@@ -36,6 +43,22 @@ public class HealthScript : MonoBehaviour
         deathBG.GetComponent<Animator>().enabled = false;
 
         GameObject.FindWithTag("Foregraund").GetComponent<ScrollingScript>().enabled = true;
+
+        heartRenderer = GameObject.Find("heart").GetComponent<SpriteRenderer>();
+        heartRenderer.enabled = false;
+
+        heartRb = GameObject.Find("heart").GetComponent<Rigidbody2D>();
+        heartRb.gravityScale = 0;
+
+        heart1Renderer = GameObject.Find("heart(1)").GetComponent<SpriteRenderer>();
+        heart1Renderer.enabled = false;
+
+        heart1Rb = GameObject.Find("heart(1)").GetComponent<Rigidbody2D>();
+        heart1Rb.gravityScale = 0;
+
+        
+
+
     }
 
     /// <summary>
@@ -45,6 +68,31 @@ public class HealthScript : MonoBehaviour
     public void Damage(int damageCount)
     {
         hp -= damageCount;
+
+        if (gameObject.tag == "Character")
+        {
+            pointPoz = GameObject.Find("heartPoint").transform.position;
+            if (damageCount == 1)
+            {
+                GameObject.Find("heart").transform.position = pointPoz;
+                heartRenderer.enabled = true;
+                heartRb.gravityScale = 1;
+                heartRb.AddForce(Vector2.up * 100);
+                Debug.Log("it was");
+            }  else
+            {
+                GameObject.Find("heart").transform.position = new Vector3(pointPoz.x+1, pointPoz.y, 0);
+                GameObject.Find("heart(1)").transform.position = pointPoz;
+                heartRenderer.enabled = true;
+                heartRb.gravityScale = 1;
+                heartRb.AddForce(Vector2.up * 100);
+                heart1Renderer.enabled = true;
+                heart1Rb.gravityScale = 1;
+                heart1Rb.AddForce(Vector2.up * 100);
+            }
+            Invoke("HeartUnable", 1.5f);
+
+        }
 
         if (hp <= 0)
         {
@@ -86,6 +134,17 @@ public class HealthScript : MonoBehaviour
 
         }
     }
+    void HeartUnable()
+    {
+
+        heartRenderer.enabled = false;       
+        heartRb.gravityScale = 0;        
+        heart1Renderer.enabled = false;        
+        heart1Rb.gravityScale = 0;
+        
+
+    }
+
 
     void Pause()
     {
