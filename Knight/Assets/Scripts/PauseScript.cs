@@ -6,9 +6,13 @@ public class PauseScript : MonoBehaviour {
 	private bool isPause = false;
     private Button _fire;
     private Button _jump;
+    private Image pauseIm;
+    public Sprite onPause;
+    public Sprite offPause;
 
 void Start()
     {
+        pauseIm = GameObject.Find("Pause").GetComponent<Image>();
         _fire = GameObject.Find("Fire").GetComponent<Button>();
         _jump = GameObject.Find("Jump").GetComponent<Button>();
     }
@@ -16,6 +20,7 @@ void Start()
     public void Pause () {
 		isPause = !isPause;
 		if (isPause) {
+            pauseIm.sprite = onPause;
 			Time.timeScale = 0;
             _fire.enabled = false;
             _jump.enabled = false;
@@ -23,6 +28,7 @@ void Start()
 
 
         else {
+            pauseIm.sprite = offPause;
             _fire.enabled = true;
             _jump.enabled = true;
             Time.timeScale = 1; 
