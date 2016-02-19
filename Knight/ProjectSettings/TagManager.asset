@@ -69,11 +69,11 @@ TagManager:
   - name: Platform
     uniqueID: 743014561
     locked: 0
-  - name: Stone
-    uniqueID: 1400972943
-    locked: 0
   - name: Enemy
     uniqueID: 2592302897
+    locked: 0
+  - name: Bonefire
+    uniqueID: 1400972943
     locked: 0
   - name: Player
     uniqueID: 76394543
