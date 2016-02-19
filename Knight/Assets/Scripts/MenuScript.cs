@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
@@ -16,6 +15,8 @@ public class MenuScript : MonoBehaviour
     private Image startImage;
     private Image firstHpIm;
     private Image secondHpIm;
+    private Image authorImage;
+    private Image backToGameImage;
 
     public Sprite voiseOnSprite;
     public Sprite voiseOffSprite;
@@ -28,6 +29,8 @@ public class MenuScript : MonoBehaviour
 
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
+        authorImage = GameObject.Find("Author").GetComponent<Image>();
+        backToGameImage = GameObject.Find("BackToGame").GetComponent<Image>();
         shootImage = GameObject.Find("Fire").GetComponent<Image>();
         jumpImage = GameObject.Find("Jump").GetComponent<Image>();
         pauseImage = GameObject.Find("Pause").GetComponent<Image>();
@@ -39,6 +42,8 @@ public class MenuScript : MonoBehaviour
         firstHpIm = GameObject.Find("Heart").GetComponent<Image>();
         secondHpIm = GameObject.Find("Heart2").GetComponent<Image>();
 
+        authorImage.enabled = false;
+        backToGameImage.enabled = false;
         //backImage.enabled = false;
         shootImage.enabled = false;
         jumpImage.enabled = false;
@@ -90,7 +95,38 @@ public class MenuScript : MonoBehaviour
 
      public void LoadAuthors()
     {
-        SceneManager.LoadScene("Authors");
+        authorImage.enabled = true;
+        backToGameImage.enabled = true;
+
+        shootImage.enabled = false;
+        jumpImage.enabled = false;
+        pauseImage.enabled = false;
+        scoreImage.enabled = false;
+        firstHpIm.enabled = false;
+        secondHpIm.enabled = false;
+        voiceImage.enabled = false;
+        startImage.enabled = false;
+        authorsImage.enabled = false;
     }
+
+
+    public void BackToMenu()
+    {
+        authorImage.enabled = false;
+        backToGameImage.enabled = false;
+
+        shootImage.enabled = false;
+        jumpImage.enabled = false;
+        pauseImage.enabled = false;
+        scoreImage.enabled = false;
+        firstHpIm.enabled = false;
+        secondHpIm.enabled = false;
+
+        voiceImage.enabled = true;
+        startImage.enabled = true;
+        authorsImage.enabled = true;
+
+    }
+
 
 }
