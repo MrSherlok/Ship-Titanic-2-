@@ -52,6 +52,7 @@ public class WeaponScript : MonoBehaviour
             //ShootAnim();            
             GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Run", false);
             GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Shoot", true);
+            GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Jump", false);
             Invoke("ShotCreate", 2f/6f);
             Invoke("EnableButton",1f);
         }

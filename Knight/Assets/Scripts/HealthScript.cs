@@ -27,6 +27,8 @@ public class HealthScript : MonoBehaviour
     private SpriteRenderer heart1Renderer;
     private Rigidbody2D heart1Rb;
     private Vector3 pointPoz;
+    private Collider2D heartCol;
+    private Collider2D heart1Col;
 
     public void Start()
     {
@@ -50,13 +52,21 @@ public class HealthScript : MonoBehaviour
         heartRb = GameObject.Find("heart").GetComponent<Rigidbody2D>();
         heartRb.gravityScale = 0;
 
+        heartCol = GameObject.Find("heart").GetComponent<Collider2D>();
+        heartCol.enabled = false;
+
+
         heart1Renderer = GameObject.Find("heart(1)").GetComponent<SpriteRenderer>();
         heart1Renderer.enabled = false;
 
         heart1Rb = GameObject.Find("heart(1)").GetComponent<Rigidbody2D>();
         heart1Rb.gravityScale = 0;
 
-        
+        heart1Col = GameObject.Find("heart(1)").GetComponent<Collider2D>();
+        heart1Col.enabled = false;
+
+
+
 
 
     }
@@ -75,12 +85,15 @@ public class HealthScript : MonoBehaviour
             if (damageCount == 1 || (damageCount == 2 && hp == -1))
             {
                 GameObject.Find("heart").transform.position = new Vector3(pointPoz.x, pointPoz.y, 0);
+                heartCol.enabled = true;
                 heartRenderer.enabled = true;
                 heartRb.gravityScale = 1;
                 heartRb.AddForce(Vector2.up * 130);
                 heartRb.AddForce(Vector2.left * 100);
                 Debug.Log("it was");
             }  else {
+                heartCol.enabled = true;
+                heart1Col.enabled = true;
                 GameObject.Find("heart").transform.position = new Vector3(pointPoz.x, pointPoz.y, 0);
                 GameObject.Find("heart(1)").transform.position = new Vector3(pointPoz.x, pointPoz.y, 0);
                 heartRenderer.enabled = true;
@@ -130,15 +143,29 @@ public class HealthScript : MonoBehaviour
 
                 gameObject.GetComponent<Collider2D>().enabled = false;
                 gameObject.GetComponent<MoveScript>().speed.x = 0;
+                var particleSys = gameObject.GetComponentInChildren<ParticleSystem>();
+               if (particleSys!= null)
+                {
+                    particleSys.Stop();
+                    Invoke("GlowEnemy", 5f);
+                }
                 //Destroy(gameObject, 5f);
             }
 
 
         }
     }
+
+    void GlowEnemy() //для включения светяшек врагов
+    {
+        gameObject.GetComponentInChildren<ParticleSystem>().Play();
+       
+    }
+
     void HeartUnable()
     {
-
+        heartCol.enabled = false;
+        heart1Col.enabled = false;
         heartRenderer.enabled = false;       
         heartRb.gravityScale = 0;        
         heart1Renderer.enabled = false;        

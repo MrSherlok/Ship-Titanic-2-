@@ -71,9 +71,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: -0.23802474, y: 0.26261932}
+  m_Offset: {x: -0.19257085, y: 0.26262274}
   serializedVersion: 2
-  m_Size: {x: 0.8486722, y: 0.6256681}
+  m_Size: {x: 0.40780082, y: 0.6256681}
 --- !u!114 &11434580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -630,7 +630,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     curve:
-      scalar: 0.7853982
+      scalar: 0.7853981
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1318,7 +1318,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     curve:
-      scalar: 0.7853982
+      scalar: 0.7853981
       maxCurve:
         serializedVersion: 2
         m_Curve:

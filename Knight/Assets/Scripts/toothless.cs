@@ -12,7 +12,7 @@ public class toothless : MonoBehaviour {
     private float groundRadius;
     [SerializeField]
     private LayerMask whatIsGround;
-    public static bool isGrounded;
+    public static bool isGrounded = true;
 
     public static bool _canAttack = true;
     public static float _shootCooldown;
@@ -64,9 +64,10 @@ public class toothless : MonoBehaviour {
     {
         if (isGrounded==true)
         {
-            rb.velocity += 6 * Vector2.up;/*.AddForce(Vector2.up * 300);*/
             GetComponent<Animator>().SetBool("Run", false);
             GetComponent<Animator>().SetBool("Jump", true);
+            rb.velocity += 6 * Vector2.up;/*.AddForce(Vector2.up * 300);*/
+
             isGrounded = false;
         }
         
