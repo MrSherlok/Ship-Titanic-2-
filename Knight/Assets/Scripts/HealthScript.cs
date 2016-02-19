@@ -72,12 +72,13 @@ public class HealthScript : MonoBehaviour
         if (gameObject.tag == "Character")
         {
             pointPoz = GameObject.Find("heartPoint").transform.position;
-            if (damageCount == 1 || (damageCount == 1 && hp == 0))
+            if (damageCount == 1 || (damageCount == 2 && hp == -1))
             {
-                GameObject.Find("heart").transform.position = pointPoz;
+                GameObject.Find("heart").transform.position = new Vector3(pointPoz.x, pointPoz.y, 0);
                 heartRenderer.enabled = true;
                 heartRb.gravityScale = 1;
-                heartRb.AddForce(Vector2.up * 100);
+                heartRb.AddForce(Vector2.up * 130);
+                heartRb.AddForce(Vector2.left * 100);
                 Debug.Log("it was");
             }  else {
                 GameObject.Find("heart").transform.position = new Vector3(pointPoz.x, pointPoz.y, 0);
@@ -85,9 +86,11 @@ public class HealthScript : MonoBehaviour
                 heartRenderer.enabled = true;
                 heartRb.gravityScale = 1;
                 heartRb.AddForce(Vector2.up * 100);
+                heartRb.AddForce(Vector2.left * 100);
                 heart1Renderer.enabled = true;
                 heart1Rb.gravityScale = 1;
                 heart1Rb.AddForce(Vector2.up * 130);
+                heart1Rb.AddForce(Vector2.left * 100);
             }
             Invoke("HeartUnable", 1.5f);
 
