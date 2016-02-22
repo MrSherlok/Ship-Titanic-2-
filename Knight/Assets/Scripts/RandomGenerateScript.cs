@@ -62,7 +62,7 @@ public class RandomGenerateScript : MonoBehaviour
                 transform.position = new Vector3(_currentPosition.x + 40f, _currentPosition.y, _currentPosition.z);
                 while (length >= genLenghth)
                 {
-                    genLenghth += Random.Range(20, 30);
+                    genLenghth += Random.Range(15, 35);
                     enemyArray[i].transform.position = new Vector3(_currentPosition.x + genLenghth, _currentPosition.y - 5, _currentPosition.z-6);
                     enemyArray[i].GetComponent<Animator>().SetBool("Die", false);
                     enemyArray[i].GetComponent<Animator>().SetBool("Run",true);
@@ -75,7 +75,7 @@ public class RandomGenerateScript : MonoBehaviour
                         i = 0;
                     }
                 }
-                length = 40;
+                length = 45;
                 genLenghth = 0;
 
 

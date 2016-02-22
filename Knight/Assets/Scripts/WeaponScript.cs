@@ -12,11 +12,11 @@ public class WeaponScript : MonoBehaviour
     public float shootingRate = 0.5f; //Время перезарядки в секундах
     private float shootCooldown; //перезарядка
 
-    private Button _shootImage;
+    private Image _shootImage;
 
     void Start()
     {
-        _shootImage = GameObject.Find("Fire").GetComponent<Button>();
+        _shootImage = GameObject.Find("Fire").GetComponent<Image>();
         shootCooldown = 0f;
     }
 

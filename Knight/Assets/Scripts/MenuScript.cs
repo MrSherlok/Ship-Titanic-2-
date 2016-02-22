@@ -6,6 +6,7 @@ public class MenuScript : MonoBehaviour
 {
 
     private Image shootImage;
+    private Image secondShootImage;
     private Image jumpImage;
     private Image pauseImage;
     //private Image backImage;
@@ -18,6 +19,7 @@ public class MenuScript : MonoBehaviour
     private Image authorImage;
     private Image backToGameImage;
 
+
     public Sprite voiseOnSprite;
     public Sprite voiseOffSprite;
 
@@ -28,7 +30,7 @@ public class MenuScript : MonoBehaviour
     {
 
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
-
+        secondShootImage = GameObject.Find("Fire1").GetComponent<Image>();
         authorImage = GameObject.Find("Author").GetComponent<Image>();
         backToGameImage = GameObject.Find("BackToGame").GetComponent<Image>();
         shootImage = GameObject.Find("Fire").GetComponent<Image>();
@@ -46,6 +48,7 @@ public class MenuScript : MonoBehaviour
         backToGameImage.enabled = false;
         //backImage.enabled = false;
         shootImage.enabled = false;
+        secondShootImage.enabled = false;
         jumpImage.enabled = false;
         pauseImage.enabled = false;
         scoreImage.enabled = false;
@@ -64,6 +67,7 @@ public class MenuScript : MonoBehaviour
         GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Idle", false);
         GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Run", true);
         shootImage.enabled = true;
+        secondShootImage.enabled = true;
         jumpImage.enabled = true;
         pauseImage.enabled = true;
         scoreImage.enabled = true;
@@ -98,6 +102,7 @@ public class MenuScript : MonoBehaviour
         authorImage.enabled = true;
         backToGameImage.enabled = true;
 
+        secondShootImage.enabled = false;
         shootImage.enabled = false;
         jumpImage.enabled = false;
         pauseImage.enabled = false;
@@ -115,6 +120,7 @@ public class MenuScript : MonoBehaviour
         authorImage.enabled = false;
         backToGameImage.enabled = false;
 
+        secondShootImage.enabled = false;
         shootImage.enabled = false;
         jumpImage.enabled = false;
         pauseImage.enabled = false;
