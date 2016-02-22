@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -17,9 +18,12 @@ public class toothless : MonoBehaviour {
     public static bool _canAttack = true;
     public static float _shootCooldown;
 
+    private Image shootImPl;
+
     void Start()
     {
-        rb= GetComponent<Rigidbody2D>();
+        shootImPl = GameObject.Find("Fire").GetComponent<Image>();
+        rb = GetComponent<Rigidbody2D>();
         
     }
     
@@ -64,15 +68,23 @@ public class toothless : MonoBehaviour {
     {
         if (isGrounded==true)
         {
+            shootImPl.enabled = false;
             GetComponent<Animator>().SetBool("Run", false);
             GetComponent<Animator>().SetBool("Jump", true);
             rb.velocity += 6 * Vector2.up;/*.AddForce(Vector2.up * 300);*/
 
             isGrounded = false;
+            Invoke("ShootReturn", 1.5f);
         }
         
     }
 
+
+    void ShootReturn()
+    {
+
+        shootImPl.enabled = true;
+    }
 
 
     public bool IsGrounded()
