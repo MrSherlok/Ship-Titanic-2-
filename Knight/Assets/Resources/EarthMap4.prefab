@@ -905,22 +905,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &184364
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 444832}
-  - 212: {fileID: 21286386}
-  m_Layer: 16
-  m_Name: forestLight
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &184384
 GameObject:
   m_ObjectHideFlags: 1
@@ -1429,18 +1413,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 495844}
   m_RootOrder: 2
---- !u!4 &444832
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 184364}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.14, y: -2.62, z: 0}
-  m_LocalScale: {x: 0.9632248, y: 0.26172075, z: 1}
-  m_Children: []
-  m_Father: {fileID: 487098}
-  m_RootOrder: 0
 --- !u!4 &445234
 Transform:
   m_ObjectHideFlags: 1
@@ -1718,8 +1690,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 19.26, y: 1.06, z: 0}
   m_LocalScale: {x: 3.219725, y: 1.6172656, z: 1}
-  m_Children:
-  - {fileID: 444832}
+  m_Children: []
   m_Father: {fileID: 419288}
   m_RootOrder: 0
 --- !u!4 &490458
@@ -4867,36 +4838,6 @@ SpriteRenderer:
   m_SortingLayerID: 743014561
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 12d9818254219c746a4ea93f6859fce4, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
---- !u!212 &21286386
-SpriteRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 184364}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5ab66b7db89a0924e8ca66691374aa51, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
