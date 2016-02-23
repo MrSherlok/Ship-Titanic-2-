@@ -43,6 +43,14 @@ public class toothless : MonoBehaviour {
 
 	void FixedUpdate () {
 
+        isGrounded = IsGrounded();
+
+
+        if (isGrounded == true)
+        {
+            GetComponent<Animator>().SetBool("Jump", false);
+            GetComponent<Animator>().SetBool("Run", true);
+        }
         if (_shootCooldown < 0)
         {
             _canAttack = true;
@@ -54,13 +62,7 @@ public class toothless : MonoBehaviour {
         }
 
 
-        isGrounded = IsGrounded();
 
-
-        if (isGrounded == true) {
-            GetComponent<Animator>().SetBool("Jump", false);
-            GetComponent<Animator>().SetBool("Run", true);
-        }
         transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 
@@ -68,13 +70,13 @@ public class toothless : MonoBehaviour {
     {
         if (isGrounded==true)
         {
+            isGrounded = false;
             shootImPl.enabled = false;
             GetComponent<Animator>().SetBool("Run", false);
             GetComponent<Animator>().SetBool("Jump", true);
             rb.velocity += 6 * Vector2.up;/*.AddForce(Vector2.up * 300);*/
-
-            isGrounded = false;
-            Invoke("ShootReturn", 1.5f);
+            
+            Invoke("ShootReturn", 1.45f);
         }
         
     }

@@ -43,25 +43,28 @@ public class WeaponScript : MonoBehaviour
 
 
     public void Attack(/*bool isEnemy*/)
-    {        
-        if (toothless._canAttack && toothless.isGrounded)
+    {
+        if (toothless._canAttack && toothless.isGrounded && isShooting == false)
         {
             _shootImage.enabled = false;
             isShooting = true;
+            toothless._shootCooldown = shootingRate;
             toothless._canAttack = false;
-            //ShootAnim();            
+            
+            
+            //ShootAnim();    
+            GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Jump", false);
             GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Run", false);
             GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Shoot", true);
-            GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Jump", false);
+            
             Invoke("ShotCreate", 2f/6f);
-            Invoke("EnableButton",1f);
+
         }
     }
 
     void ShotCreate()
     {
-        toothless._shootCooldown = shootingRate;
-
+        
             // Создайте новый выстрел
             var shotTransform = Instantiate(shotPrefab) as Transform;
 
@@ -75,21 +78,24 @@ public class WeaponScript : MonoBehaviour
                // shot.isEnemyShot = isEnemy;
             }
 
-            MoveScript move = shotTransform.gameObject.GetComponent<MoveScript>();
+        MoveScript move = shotTransform.gameObject.GetComponent<MoveScript>();
             if (move != null)
             {
               move.direction = Vector2.right; // в двухмерном пространстве это будет справа от спрайта
             }
-
         GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Run", true);
         GameObject.Find("Character_Global_CTRL").GetComponent<Animator>().SetBool("Shoot", false);
-        isShooting = false;        
+        isShooting = false;
+        Invoke("EnableButton", 2f/6f);
+
     }
 
-    void EnableButton()
+    void EnableButton ()
     {
         _shootImage.enabled = true;
+
     }
+
 
     //void ShootAnim()
     //{
