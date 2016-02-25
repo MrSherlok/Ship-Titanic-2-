@@ -76,7 +76,7 @@ public class toothless : MonoBehaviour {
             GetComponent<Animator>().SetBool("Jump", true);
             rb.velocity += 6 * Vector2.up;/*.AddForce(Vector2.up * 300);*/
             
-            Invoke("ShootReturn", 1.45f);
+            Invoke("ShootReturn", 1.3f);
         }
         
     }

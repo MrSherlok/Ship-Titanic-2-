@@ -10,15 +10,16 @@ public class RandomGenerateScript : MonoBehaviour
     private Vector3 _currentPosition;
     public bool isTriggerComplete = false;
     private int _randomNumber = 0;
+    private int preLastRandomNumber = 0;
     List<GameObject> SceneList = new List<GameObject>();
-    public int lastRandomNumber = 0;
+    private int lastRandomNumber = 0;
     //private Vector3 positionOfWall; 
     //public int maxRandomNumber = 4; 
 
         public List<GameObject> enemyArray = new List<GameObject>();
     private int i = 0;
 
-    public GameObject enemyObj;
+   // public GameObject enemyObj;
     private int length = 40;
     private int genLenghth = 0;
     private int quantity;
@@ -45,11 +46,12 @@ public class RandomGenerateScript : MonoBehaviour
 
         if (isTriggerComplete)
         {
-            while (_randomNumber == lastRandomNumber)
+            while (_randomNumber == lastRandomNumber || _randomNumber == preLastRandomNumber)
             {
                 _randomNumber = Random.Range(0, SceneList.Count);
             }
             _currentPosition = pointColl.transform.position;
+            preLastRandomNumber = lastRandomNumber;
             lastRandomNumber = _randomNumber;
 
             quantity = Random.Range(1, 3);
@@ -71,7 +73,7 @@ public class RandomGenerateScript : MonoBehaviour
                     enemyArray[i].GetComponent<MoveScript>().speed.x = 3;
                     i++;
                     Debug.Log("tp was");
-                    if (i >= 4) {
+                    if (i >= 6) {
                         i = 0;
                     }
                 }
