@@ -59,8 +59,11 @@ public class MenuScript : MonoBehaviour
         authorsImage.enabled = true;
         GameObject.Find("Tap to start").GetComponent<SpriteRenderer>().enabled = true;
 
+        AudioListener.pause = false;
+
         Time.timeScale = 0;
     }
+
 
     public void StartButton()
     {
@@ -87,15 +90,17 @@ public class MenuScript : MonoBehaviour
         canMute = !canMute;
         if (canMute)
         {
-            AudioListener.pause = true;
-            voiceImage.sprite = voiseOffSprite;
-        }
-        else
-        {
             AudioListener.pause = false;
             voiceImage.sprite = voiseOnSprite;
         }
+        else
+        {
+            AudioListener.pause = true;
+            voiceImage.sprite = voiseOffSprite;
+        }
     }
+
+
 
      public void LoadAuthors()
     {
